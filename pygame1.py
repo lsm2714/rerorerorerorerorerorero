@@ -8,7 +8,7 @@ pygame.init()
 WINDOW_WIDTH = 600
 WINDOW_HEIGHT = 300
 
-# RGE 색상 기준으로 사용할 색깔 정의 
+# RGE 색상 기준으로 사용할 색깔 정의. 참조 : https://www.w3schools.com/colors/colors_picker.asp
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 RED = (255, 0, 0)
@@ -27,6 +27,9 @@ pygame.draw.line(display_surface, RED, (100, 100), (200, 200), 3)
 # circule() 함수를 이용하여 하얀색으로 동그라미 그리기
 pygame.draw.circle(display_surface, WHITE, (WINDOW_WIDTH//2, WINDOW_HEIGHT//2), 50, 3)
 
+# Rectangle() 함수를 이용하여 녹색으로 네모칸 그리기
+pygame.draw.rect(display_surface, GREEN, (300, 0, 100, 100), 3)
+
 # 이름 설정 
 pygame.display.set_caption('이승민ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ')
 
@@ -41,3 +44,7 @@ while running :
 
 # 화면 종료 
 pygame.quit()
+
+
+
+
