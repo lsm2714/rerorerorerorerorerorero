@@ -1,4 +1,4 @@
-'''# 명시적 형변환, 사용자로부터 여러 개의 숫자를 쉼표로 구분하여 문자열로 입력받기 
+# 명시적 형변환, 사용자로부터 여러 개의 숫자를 쉼표로 구분하여 문자열로 입력받기 
 input_value = input('숫자들을 쉼표로 구분하여 입력하세요 : ')
 # 쉼표를 기준으로 구분하기 
 numbers_str = input_value.split(',')
@@ -16,13 +16,17 @@ for num in numbers_int :
         break 
 # 100을 넘을 경우 알맞게 출력
 if result > 100 :
-    print('총합이 100을 초과하였습니다.')
-    print(f'현재까지의 입력값들 : {valid_numbers}')
-    print(f'최종 총합 : {result}')
+    print(
+f'''총합이 100을 초과하였습니다.')
+현재까지의 입력값들 : {valid_numbers}')
+현재까지의 총합 : {result}''')
 # false일 경우 알맞게 출력  
 else :
     print(f'''
-''')'''
+총합이 100을 초과하지 않았습니다.
+입력된 모든 숫자들 : {numbers_int}
+최종 총합 : {result}
+''')
     
 
 
