@@ -1,4 +1,4 @@
-# 명시적 형변환, 사용자로부터 여러 개의 숫자를 쉼표로 구분하여 문자열로 입력받기 
+'''# 명시적 형변환, 사용자로부터 여러 개의 숫자를 쉼표로 구분하여 문자열로 입력받기 
 input_value = input('숫자들을 쉼표로 구분하여 입력하세요 : ')
 # 쉼표를 기준으로 구분하기 
 numbers_str = input_value.split(',')
@@ -22,7 +22,7 @@ if result > 100 :
 # false일 경우 알맞게 출력  
 else :
     print(f'''
-''')
+''')'''
     
 
 
@@ -63,26 +63,3 @@ else :
 
 
 
-'''# 명시적 형변환 
-input_value = input('숫자들을 쉼표로 구분하여 입력하세요 : ')
-# 문자열에서 쉼표를 기준으로 문자 구분하기 
-numbers_str = input_value.split(',')
-# 문자열 리스트를 정수로 변환 
-numbers_int = [int(num) for num in numbers_str]
-# for 문을 활용하여 리스트 안의 숫자를 서로 더하기
-result = 0
-# 100을 초과할 경우 숫자를 넣을 리스트 선언 
-valid_numbers = []
-for num in numbers_int :
-    result += num 
-    valid_numbers.append(num)
-    if result > 100 :
-        break
-if result <= 100:
-    print('총합이 100을 초과하지 않았습니다.')
-    print(f'입력된 모든 숫자들 : {numbers_int}')
-    print(f'최종 총합 : {result}')
-else:
-    print('총합이 100을 초과하였습니다.')
-    print(f'현재까지의 입력값들 : {valid_numbers}')
-    print(f'현재까지의 총합 : {result}')'''
