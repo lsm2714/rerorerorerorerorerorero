@@ -5,12 +5,24 @@ print("3")
 
 # end=' '는 아래에 있는 print() 함수를 위로 끌고 오는 것 (무조건 end=' '의 형태이어야 함)'''
 
-# 공백을 기준으로 특정 단어의의
+# 공백을 기준으로 특정 단어의 출현 빈도 계산 
+# 문자열 입력 
+input_value1 = input('문자열 입력 : ')
+# 단어 입력 
+input_value2 = input('단어 입력 : ')
+# 띄어쓰기를 기준으로 단어 구분
+input_value1 = input_value1.split()
+# 단어의 출현 빈도 계산 후 출력 
+words = input_value1.count(input_value2)
+print(f'단어 "{input_value2}"의 출현 빈도 : {words}')
 
 
 
+'''print("1", end='ㅁㅁ')
+print("2", end='ㅁㅁ')
+print("3")
 
-
+# end=' '는 아래에 있는 print() 함수를 위로 끌고 오는 것 (무조건 end=' '의 형태이어야 함)'''
 
 
 
