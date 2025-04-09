@@ -8,7 +8,7 @@ pygame.init()
 WINDOW_WIDTH = 800
 WINDOW_HEIGHT = 600
 display_surface = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-pygame.display.set_caption('그린란드 이미지 집어넣기')
+pygame.display.set_caption('새와 몬스터의 충돌')
 
 # 초당 프레임 설정
 clock = pygame.time.Clock()
@@ -26,13 +26,18 @@ comix_rect.centerx = (WINDOW_WIDTH//2)
 comix_rect.bottom = (WINDOW_HEIGHT//3)
 
 # 화면에 출력할 텍스트 설정하기
-system_font = pygame.font.SysFont('verdana', 30)
-game_font = system_font.render('FIGHT!!!!', True, (0, 255, 140), (80, 140, 220))
-game_font_rect = game_font.get_rect()
-game_font_rect.center = (WINDOW_WIDTH//2, 100)
+system_font1 = pygame.font.SysFont('verdana', 30)
+game_font1 = system_font1.render('FIGHT!!!!', True, (0, 255, 140), (80, 140, 220))
+game_font_rect1 = game_font1.get_rect()
+game_font_rect1.center = (WINDOW_WIDTH//2, 100)
+
+system_font2 = pygame.font.SysFont('verdana', 30)
+game_font2 = system_font2.render('Collision!!!!!!!!!!', True, (255, 123, 0), None)
+game_font_rect2 = game_font2.get_rect()
+game_font_rect2.center = (WINDOW_WIDTH//2, 400)
 
 # 화면이 계속 출력될 수 있도록 while 반복문과 True 조건 달기 
-running = True
+running = True 
 while running :
     for event in pygame.event.get() :
         if event.type == pygame.QUIT :
@@ -49,10 +54,14 @@ while running :
         bird_rect.y -= 5
     if (key[pygame.K_DOWN] or key[pygame.K_s]) and bird_rect.bottom < WINDOW_HEIGHT:
         bird_rect.y += 5
-       
-    # 캐릭터 충돌 이벤트 구현 
+        
+    # 새와 몬스터가 부딪히면 Collision!!! 출력 설정 
+    show_collision = False
     if bird_rect.colliderect(comix_rect) :
-      print('충돌!!!!!!!!!!!!!!!!!')
+        show_collision = True
+    else : 
+        show_collision = False
+      
     # 이미지가 겹쳐 보이지 않게 fill() 메서드 입력을 하여 원한는 색깔 집어넣기 
     # (이건 updata가 있기 때문에 매 순간마다 화면을 특정 색깔로 칠해준다.)
     display_surface.fill((0, 0, 0))
@@ -60,7 +69,12 @@ while running :
     # 이미지와 텍스트를 화면에 출력 (이미지가 아래로 가게 순서 맞추기)
     display_surface.blit(bird_image, bird_rect) 
     display_surface.blit(comix_image, comix_rect)
-    display_surface.blit(game_font, game_font_rect)
+    display_surface.blit(game_font1, game_font_rect1)
+    
+    # 만약 show_collision이 True일 경우 Collision!!!!!!! 출력
+    if show_collision :
+        display_surface.blit(game_font2, game_font_rect2)
+    
     pygame.display.update() 
     
     # 초당 프레임 적용 
