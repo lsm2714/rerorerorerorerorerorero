@@ -32,7 +32,7 @@ score_live = 5
 # FIGHT!!! 텍스트와 충돌 시 나타날 Collision!!! 텍스트 설정 
 system_font = pygame.font.SysFont('verdana', 30) # 이거는 다 따로따로 할 필요 없이 그냥 하나만 선언해 두고 써먹으면 된다.
 
-game_fight_font = system_font.render('FIGHT!!!!', True, (0, 0, 255), (234, 31, 31))
+game_fight_font = system_font.render('KILL MONSTER!!!!', True, (0, 0, 255), (234, 31, 31))
 game_fight_font_rect = game_fight_font.get_rect()
 game_fight_font_rect.center = (WINDOW_WIDTH//2, 130)
 
@@ -77,7 +77,8 @@ while running :
         display_surface.blit(game_collision_font, game_collision_font_rect)
         # 충돌할 때마다 리브 스코어 깎이게 하기 
         score_live -= 1 
-        monster_image_rect.x = random.randint(0, WINDOW_WIDTH - 50)
+        monster_image_rect.x = random.randint(0, WINDOW_WIDTH - 50) 
+        # randint()는 입력한 숫자 사이의 랜덤한 값을 지정하는 기능
         monster_image_rect.y = random.randint(0, WINDOW_HEIGHT - 50)
     # 점수판 표시 
     if score_live > 0 :
@@ -88,7 +89,10 @@ while running :
     # 이미지, 텍스트 화면에 출력
     display_surface.fill((0, 0, 0)) # 이미지가 움직일 때마다 검은색으로 칠하여 겹쳐 보이지 않게 하기 
     display_surface.blit(bird_image, bird_image_rect)
-    display_surface.blit(monster_image, monster_image_rect)
+    if score_live > 0 :
+        display_surface.blit(monster_image, monster_image_rect)
+    else :
+        game_fight_font = system_font.render('YES!!! YES!!! YES!!!', True, (0, 0, 255), (234, 31, 31))
     display_surface.blit(game_fight_font, game_fight_font_rect)
         
     # 스코어 텍스트 출력 
