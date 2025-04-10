@@ -84,7 +84,7 @@ while running :
         game_live_font = system_font.render('lives : ' + str(score_live), True, (234, 23, 190), (255, 255, 255))
     else :
         game_live_font = system_font.render('DIED...', True, (234, 23, 190), (255, 255, 255))
-        not monster_image
+        
     # 이미지, 텍스트 화면에 출력
     display_surface.fill((0, 0, 0)) # 이미지가 움직일 때마다 검은색으로 칠하여 겹쳐 보이지 않게 하기 
     display_surface.blit(bird_image, bird_image_rect)
