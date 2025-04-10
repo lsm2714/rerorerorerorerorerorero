@@ -1,5 +1,7 @@
 # 파이게임 모듈 불러오기 
 import pygame
+# 랜덤 모듈 불러오기 
+import random
 
 # 원활한 실행을 위한 초기화 
 pygame.init()
@@ -24,7 +26,7 @@ monster_image_rect.center = (WINDOW_WIDTH/4, 50)
 # 초당 프레임 설정
 clock = pygame.time.Clock()
 
-# 라이브 스코어 설정 
+# 리브 스코어 설정 
 score_live = 5
 
 # FIGHT!!! 텍스트와 충돌 시 나타날 Collision!!! 텍스트 설정 
@@ -73,15 +75,21 @@ while running :
     # 만약 새와 충돌할 경우 Collision!!! 출력 설정 - 2
     if show_collision :
         display_surface.blit(game_collision_font, game_collision_font_rect)
+        # 충돌할 때마다 리브 스코어 깎이게 하기 
         score_live -= 1 
+        monster_image_rect.x = random.randint(0, WINDOW_WIDTH - 50)
+        monster_image_rect.y = random.randint(0, WINDOW_HEIGHT - 50)
     # 점수판 표시 
-    game_live_font = system_font.render('lives : ' + str(score_live), True, (234, 23, 190), (255, 255, 255))
-
+    if score_live > 0 :
+        game_live_font = system_font.render('lives : ' + str(score_live), True, (234, 23, 190), (255, 255, 255))
+    else :
+        game_live_font = system_font.render('DIED...', True, (234, 23, 190), (255, 255, 255))
+        not monster_image
     # 이미지, 텍스트 화면에 출력
     display_surface.fill((0, 0, 0)) # 이미지가 움직일 때마다 검은색으로 칠하여 겹쳐 보이지 않게 하기 
     display_surface.blit(bird_image, bird_image_rect)
     display_surface.blit(monster_image, monster_image_rect)
-    display_surface.blit(game_fight_font, game_fight_font_rect)\
+    display_surface.blit(game_fight_font, game_fight_font_rect)
         
     # 스코어 텍스트 출력 
     display_surface.blit(game_live_font, game_live_font_rect)
