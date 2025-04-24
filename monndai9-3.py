@@ -13,11 +13,11 @@ vaild_number = [] # 100이 넘을 경우 따로 담을 리스트 만들기
 
 # 모든 숫자의 합 계산 
 for num in numbers_int :
-    vaild_number.append(num)
     if number > 100 :
-        break # 100을 초과할 때 break를 걸어 딱 100을 초과하는 숫자까지만 리스트에 담게 하기 + 반복 멈추기 
+        break # 100을 초과할 때 break를 걸어 반복을 멈추어 딱 100을 초과하는 숫자까지만 리스트에 담게 하기
+    vaild_number.append(num)
     number += num 
-
+    
 # 결과 출력 
 # 만약 100을 초과할 경우와 아닌 경우 설정 
 if number > 100 :
