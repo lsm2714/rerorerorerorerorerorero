@@ -1,69 +1,34 @@
-# 명시적 형변환, 사용자로부터 여러 개의 숫자를 쉼표로 구분하여 문자열로 입력받기 
-input_value = input('숫자들을 쉼표로 구분하여 입력하세요 : ')
-# 쉼표를 기준으로 구분하기 
-numbers_str = input_value.split(',')
-# 리스트를 정수형으로 바꾸기 
-numbers_int = [int(num) for num in numbers_str]
-# for문을 활용하여 리스트의 각 요소를 서로 더하기 
-result = 0
-valid_numbers = [] # 총합이 100을 초과할 경우 넣을 리스트 선언 
+# 명시적 형변환 
+# 숫자들을 쉼표로 구분하여 입력받기 
+numbers_str1 = input('숫자들을 쉼표로 구분하여 입력하세요 : ') 
+
+# 쉼표를 기준으로 문자열 구분하기 
+numbers_str2 = numbers_str1.split(',')
+
+# 문자열 리스트를 정수형 리스트로 변환
+numbers_int = [int(num) for num in numbers_str2] 
+
+number = 0 # 이후의 계산을 위한 값 0 설정 
+vaild_number = [] # 100이 넘을 경우 따로 담을 리스트 만들기 
+
+# 모든 숫자의 합 계산 
 for num in numbers_int :
-    result += num 
-    # 더하는 중 100을 넘을 경우 break 걸고 100을 넘는 숫자까지 리스트에 포함하기 
-    # 100을 넘지 않아도 리스트에 포함되긴 함 
-    valid_numbers.append(num)
-    if result > 100 :
-        break 
-# 100을 넘을 경우 알맞게 출력
-if result > 100 :
-    print(
-f'''총합이 100을 초과하였습니다.')
-현재까지의 입력값들 : {valid_numbers}')
-현재까지의 총합 : {result}''')
-# false일 경우 알맞게 출력  
-else :
-    print(f'''
-총합이 100을 초과하지 않았습니다.
-입력된 모든 숫자들 : {numbers_int}
-최종 총합 : {result}
-''')
+    vaild_number.append(num)
+    if number > 100 :
+        break # 100을 초과할 때 break를 걸어 딱 100을 초과하는 숫자까지만 리스트에 담게 하기 + 반복 멈추기 
+    number += num 
+
+# 결과 출력 
+# 만약 100을 초과할 경우와 아닌 경우 설정 
+if number > 100 :
+    print('총합이 100을 초과하였습니다.')
+    print(f'현재까지의 입력값들 : {vaild_number}')
+    print(f'현재까지의 총합 : {number}')
+else : 
+    print('총합이 100을 초과하지 않았습니다.') 
+    print(f'입력된 모든 숫자들 : {numbers_int}')
+    print(f'최종 총합 : {number}')
+
+
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
