@@ -1,32 +1,50 @@
-# 리스트를 이용한 통계량 계산 
-import random 
+# 리스트 요소의 CRUD 조작 
+# 빈 리스트 만들기 
+aita_list = [] 
 
-# 루트 계산을 위한 math 모듈 불러오기 
-import math
+# 작업 입력 (반복)
+while True :
+    CRUD = int(input('''
+작업을 선택하세요 : 
+1: 추가 (Create)
+2: 조회 (Read)
+3: 수정 (Update)
+4: 삭제 (Delete)
+5: 종료 (Exit)
+입력 : '''))
+    
+    # 인덱스 리스트 만들기 
+    indexes = list(range(len(aita_list)))
 
-# 리스트 개수 입력 
-number = int(input('리스트 개수를 입력하세요 (5~20) : '))
-if 5 > number or number > 20 :
-    print('오류 : 리스트 개수는 5 이상 20 이하여야 합니다.') 
-    exit() 
-
-# 입력한 숫자에 따라 리스트 요소 개수 랜덤으로 생성 
-list_number = [random.randint(1, 100) for _ in range(number)]
-
-# 리스트 출력 
-print(f'\n생성된 리스트 : {list_number}')
-# 평균 구하기 
-avg = sum(list_number) / len(list_number)
-print(f'평균 : {avg:.1f}')
-# 편차 구하기 (소수점 2자리 수까지 반올림)
-dev = [round(i - avg, 2) for i in list_number]
-print(f'편차 : {dev}')
-# 분산 구하기 
-dev_var = 0
-for dev_x in dev :
-    dev_var += (dev_x**2)
-var = dev_var / len(list_number)
-print(f'분산 : {round(var, 2)}')
-# 표준 편차 구하기 
-Standatd_dev = math.sqrt(var) # 루트 씌울라면 math.sqrt() 하면 됨 
-print(f'표준 편차 : {round(Standatd_dev, 2)}')
+    # 입력한 숫자에 따라 올바른작업 실행 
+    # 추가 
+    if CRUD == 1 :
+        create = input('추가할 값을 입력하세요 : ')
+        aita_list.append(create) 
+        print('추가 완료')
+    # 조회 
+    if CRUD == 2 :
+        print('\n[현재 리스트 내용]')
+        for i, ch in enumerate(aita_list) :
+            print(f'{i} : {ch}')
+    # 수정 
+    if CRUD == 3 :
+        create_index = int(input('수정할 인덱스를 입력하세요 : '))
+        if create_index in indexes :
+            update2 = input('새로운 값을 입력하세요 : ')
+            aita_list[create_index] = update2 
+            print('수정 완료')
+        else :
+            print('유효하지 않은 인덱스입니다.')
+    # 삭제 
+    if CRUD == 4 :
+        delete_index = int(input('삭제할 인덱스를 입력하세요 : '))
+        if delete_index in indexes :
+            aita_list.pop(delete_index)
+            print('삭제 완료')
+        else :
+            print('유효하지 않은 인덱스입니다.')
+    # 종료 
+    if CRUD == 5 :
+        print('프로그램을 종료합니다.')
+        break
