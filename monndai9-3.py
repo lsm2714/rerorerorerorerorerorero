@@ -1,4 +1,4 @@
-# 리스트 요소의 CRUD 조작 
+"""# 리스트 요소의 CRUD 조작 
 # 빈 리스트 만들기 
 aita_list = [] 
 
@@ -47,4 +47,44 @@ while True :
     # 종료 
     if CRUD == 5 :
         print('프로그램을 종료합니다.')
-        break
+        break"""
+# 문자열 검색 및 위치 찾기 
+# 미리 지정된 문자열 
+text = 'apple banana orange apple kiwi apple mango'
+
+# 빈 리스트 만들기 
+list_text = []
+# 문자열 리스트에 넣기 
+bar = ''
+for val in text :
+    # val이 ' '가 아닐 때만 bar에 val 더하기 
+    if val != ' ' :
+        bar += val 
+    # ' '일 경우 리스트에 bar 추가
+    else :
+        list_text.append(bar)
+        # bar 초기화 
+        bar = ''
+# 마지막 단어도 추가 
+list_text.append(bar)
+
+# 찾을 문자열 입력 
+find_text = input('찾을 문자열을 입력하세요 : ')
+
+# 입력한 문자열이 리스트 안에 있을 경우 총 등장 횟수와 위치 (인덱스) 출력 
+count1 = 0
+for idx1 in list_text :
+    if idx1 == find_text :
+        count1 += 1
+print(f'"{find_text}"은 총 {count1}번 등장합니다.')
+
+count2 = 0
+index_list = []
+for idx2 in list_text :
+    if idx2 == find_text :
+        index_list.append(count2)
+    count2 += 1
+print(f'위치 (인덱스) : {index_list}')
+    
+        
+        
