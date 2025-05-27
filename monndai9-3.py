@@ -1,42 +1,23 @@
-# 문자열 검색 및 위치 찾기 (바닐라 버전)
+import matplotlib.pyplot as plt 
 
-# 미리 정의된 문자열 설정 
-text = 'bar bar pos foo kin bar mab pos foo bar sol sol bar foo kin' 
+# 그래프 좌표 설정
+x = [val for val in range(-10, 11)]
+y1 = [val*2 for val in x]
+y2 = [val*4 for val in x]
+y3 = [val*6 for val in x]
 
-# 문자열을 띄어쓰기 기준으로 리스트에 집어넣기 
-bar = ''
-list_text = []
-for val in text :
-    # 문자열 단어 리스트에 넣기.
-    if val == ' ' :
-        list_text.append(bar)
-        bar = '' # bar 초기화로 다음 단어 시작  
-        continue
-    # 단어 만들기 
-    bar += val
-    
-# 마지막 단어 추가 
-list_text.append(bar)
+# 그래프 그리기 
+plt.plot(x, y1, label = 'X2')
+plt.plot(x, y2, color = 'red', marker = 'o', label = 'X4')
+plt.plot(x, y3, marker = 'x', label = 'X6')
 
-# 찾을 문자열 입력 
-find_text = input('찾을 문자열을 입력하세요 : ')
+# 그래프 꾸미기 
+plt.legend() 
+plt.xlabel('X_axis')
+plt.ylabel('Y_axis')
+plt.title('GRAPH') 
+plt.grid(True) # 그래프 바탕에 선 추가 
 
-# 만약 있을 경우 그 문자열의 개수 세기 
-count = 0
-if find_text in list_text :
-    for find in list_text :
-        if find == find_text :
-            count += 1
-    print(f'{find_text}는 총 {count}번 등장합니다.')
-# 위치 (인덱스) 리스트에 추가 
-    index = 0 
-    list_index = []
-    for find_index in list_text :
-        if find_index == find_text :
-            list_index.append(index)
-        index += 1 
-    print(f'위치 (인덱스) : {list_index}')
-else :
-    print('입력하신 문자열은 없는 문자열입니다.')
+# 그래프 출력 
+plt.show() 
 
-    
