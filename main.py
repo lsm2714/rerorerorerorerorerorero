@@ -1,33 +1,39 @@
-food_dict = {} 
-age_list = ['10대', '20대', '30대', '40대', '종료']
+book_dict = {} 
+menu_list = ['소설', '만화', '과학', '종료']
 
 # 반복 설정 
 while True : 
-    age = input('당신의 나이대는? (10대/20대/30대/40대/종료): ')
-    if age not in age_list : 
-        print('잘못된 입력입니다. 다시 입력해 주세요.')
-        continue
-    if age == '종료' : 
+    menu = input('도서 장르를 입력하세요 (예: 소설, 만화, 과학, 종료): ')
+    if menu not in menu_list :
+        print('올바르지 않은 입력입니다. 소설, 만화, 과학, 종료 중에서 선택하세요.')
+        continue 
+    if menu == '종료' :
         break
-    food = input('가장 좋아하는 음식은 무엇인가요? ')
-    # 딕셔너리 설정 
-    if age not in food_dict : 
-        food_dict[age] = {food : 1}
+    name = input('책 제목을 입력하세요: ')
+    # 딕셔너리 設定 
+    if menu not in book_dict :
+        book_dict[menu] = {name : 1}
     else : 
-        if food in food_dict[age] :
-            food_dict[age][food] += 1
+        if name in book_dict[menu] :
+            book_dict[menu][name] += 1
         else : 
-            food_dict[age][food] = 1
-
-if food_dict == {} :
-    print('저장된 설문 결과가 없습니다.')
+            book_dict[menu][name] = 1
+    
+# 대여 기록 출력 
+if book_dict == {} :
+    print('저장된 대여 기록이 존재하지 않습니다.')
 else : 
-    print('\n--- 설문 결과 ---')
-    for k1, v1 in food_dict.items() : 
+    print('\n--- 장르별 대여 기록 ---')
+    for k1, v1 in book_dict.items() : 
         print(f'[{k1}]')
+        all_num_list = []
         for k2, v2 in v1.items() :
             print(f'{k2}: {v2}회')
-             
+        for v3 in v1.values() :
+            all_num_list.append(v3)
+        print(f'총 대여 수: {sum(all_num_list)}회')
+        
+    
 
 
 
